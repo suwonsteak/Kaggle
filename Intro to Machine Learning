@@ -1,0 +1,49 @@
+의사결정 나무를 통해 데이터를 분류
+pandas는 dateframe을 가진 패키지
+
+import pandas as pd
+
+# save filepath to variable for easier access 먼저 경로를 엑세스 하기 쉽게 저장
+melbourne_file_path = '../input/melbourne-housing-snapshot/melb_data.csv'
+
+# read the data and store data in DataFrame titled melbourne_data 데이터를 읽고 변수에 저장
+melbourne_data = pd.read_csv(melbourne_file_path) 
+# print a summary of the data in Melbourne data 일부 추출하여 제대로 저장 되었는지 확인
+melbourne_data.describe()
+
+///실습
+
+import pandas as pd
+
+# Path of the file to read
+iowa_file_path = '../input/home-data-for-ml-course/train.csv'
+
+# Fill in the line below to read the file into a variable home_data // home_date변수에 데이터셋 저장
+home_data = pd.read_csv(iowa_file_path)
+
+# Call line below with no argument to check that you've loaded the data correctly
+step_1.check()
+
+
+# Print summary statistics in next line /// 잘 저장 되었는지 확인
+home_data.describe()
+
+중간에 없는 데이터를 찾는것?
+melbourne_data = melbourne_data.dropna(axis=0)
+y축에 column저장
+y = melbourne_data.Price
+
+column여러개 변수에 저장
+melbourne_features = ['Rooms', 'Bathroom', 'Landsize', 'Lattitude', 'Longtitude']
+
+x축에 column저장
+X = melbourne_data[melbourne_features]
+
+의사결정 나무
+from sklearn.tree import DecisionTreeRegressor
+
+# Define model. Specify a number for random_state to ensure same results each run??????
+melbourne_model = DecisionTreeRegressor(random_state=1)
+
+# Fit model
+melbourne_model.fit(X, y)
